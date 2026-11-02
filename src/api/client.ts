@@ -1,5 +1,7 @@
 // One small fetch wrapper: JSON in/out, and readable errors for every failure (network, validation, server).
-const BASE = ((import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "").replace(/\/$/, "");
+// The hosted backend. Override with VITE_API_BASE_URL (set it to an empty value to use the same origin / the Vite dev proxy).
+const HOSTED_API = "https://voice-agent-backend-245l.onrender.com";
+const BASE = ((import.meta.env.VITE_API_BASE_URL as string | undefined) ?? HOSTED_API).replace(/\/$/, "");
 
 export class ApiError extends Error {
   constructor(message: string, public status: number) {
