@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const api = env.VITE_PROXY_TARGET || "http://127.0.0.1:8020";
   return {
     envDir: "..",
+    base: env.VITE_BASE || "/", // GitHub Pages serves a project site from /<repo>/
     plugins: [react()],
     server: { port: 3000, strictPort: true, proxy: { "/api": { target: api, changeOrigin: true, ws: true } } },
   };
